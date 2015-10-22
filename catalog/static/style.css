@@ -1,0 +1,71 @@
+html {
+	background-color: #E5F7F7;
+}
+
+h1 {
+  color: blue;
+}
+
+h4 {
+  color: #F7F7F7;
+  height: inherit;
+  padding-top: 15px;
+}
+
+a:hover {
+	color: gray;
+	text-decoration: none;
+}
+
+#add-item-link {
+	color: red;
+}
+
+#add-item-link:hover {
+	color: gray;
+}
+
+#top-bar {
+	background-color:green;
+	right:0;
+	left:0;
+	height:65px;
+}
+
+#vertical-offset {
+	padding-top: 80px;
+}
+
+.login {
+	margin-top: 20px;
+	background-color: green;
+	margin-right: -10px;
+}
+
+#catalog-title {
+	color:#F7F7F7;
+	margin-left: 100px;
+}
+
+#catalog-container {
+	margin-left: 50px;
+}
+
+#second-bar {
+	margin-top:65px;
+	background-color: #E5F7F7;
+	padding-left: 115px;
+}
+
+#title-additem-bar {
+	position: relative;
+}
+
+#add-item {
+	position: relative;
+	bottom: 0;
+}
+
+#result {
+	height: inherit;
+}

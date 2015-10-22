@@ -1,0 +1,25 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="col-xs-12">
+	<h2> Edit {{item.name}} </h2>
+	<form action="#" method = "post">
+		<div>
+			<label>New Description:</label>
+			</br>
+			</br>
+			<input type ="text" maxlength="1000" name="description" value="{{item.description }}" class="col-xs-9">
+			</br>
+			</br>
+			<button type="submit" id="submit" type="submit" class="btn btn-sm btn-success">
+				<span aria-hidden="true"></span>Save
+			</button>
+			<a href="{{url_for('viewItem', category_name = category.name, item_name = item.name )}}">
+				<button class="btn btn-sm btn-danger">
+					<span aria-hidden="true"></span> Cancel
+				</button>
+			</a>
+		</div>
+	</form>
+</div>
+{% endblock %}
+

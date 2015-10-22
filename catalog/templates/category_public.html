@@ -1,0 +1,18 @@
+{% extends "main.html" %}
+{% block content %}
+<div id="title-additem-bar" class="col-xs-12">
+	<div>
+		<h2>{{category.name}} Items</h2>
+	</div>
+	</br>
+</div>
+	<br>
+	{% for item in items %}
+	<div class="col-xs-12"> 
+		<a href="{{url_for('viewItem', category_name = category.name, item_name = item.name )}}">
+			{{item.name}}
+		</a>
+	</div>
+	{% endfor %}
+{% endblock %}
+

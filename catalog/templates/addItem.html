@@ -1,0 +1,30 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="col-xs-12">
+	<h2> Add New Item to {{category.name}} Category</h2>
+	<form action="#" method = "post">
+			</br>
+			<div class="col-xs-12">
+				<label class="col-xs-1">Name:</label>
+				<input type ="text" maxlength="100" class="col-xs-offset-1 col-xs-3" name="name">
+			</div>
+			</br>
+			</br>
+			<div class="col-xs-12">
+				<label class="col-xs-1">Description:</label>
+				<input type="text" maxlength="1000" name="description" class="col-xs-offset-1 col-xs-3">
+			</div>
+			</br>
+			</br>
+			<button type="submit" id="submit" type="submit" class="btn btn-sm btn-success">
+			<span></span>Save</button>
+			<a href="{{url_for('viewCategory', category_name = category.name )}}">
+				<button class="btn btn-sm btn-danger">
+					<span aria-hidden="true"></span> Cancel
+				</button>
+			</a>
+		</div>
+	</form>
+</div>
+{% endblock %}
+

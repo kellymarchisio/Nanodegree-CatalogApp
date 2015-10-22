@@ -1,0 +1,17 @@
+{% extends "main.html" %}
+{% block content %}
+<div class="col-xs-12">
+	<h2> Are you sure you want to delete {{item.name}}? </h2>
+	<form action="#" method = 'post'>
+		<button type="submit" id="submit" class="btn btn-sm btn-success">
+			Delete
+		</button>
+		<a href = "{{url_for('viewCategory', category_name = category.name )}}">
+			<button class="btn btn-sm btn-danger">
+				Cancel
+			</button>
+		</a>
+	</form>
+</div>
+{% endblock %}
+

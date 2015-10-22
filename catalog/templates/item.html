@@ -1,0 +1,22 @@
+{% extends "main.html" %}
+{% block content %}
+	<div class="col-xs-12">
+		<div>
+			<h2>{{item.name}}</h2>
+		</div>
+		<div> 
+			<p>{{item.description}}</a>
+		</div>
+		<a href="{{url_for('editItem', category_name = category.name, item_name = item.name )}}">  
+			<button class="btn btn-sm btn-success">
+				<span aria-hidden="true"></span> Edit
+			</button>
+		</a>
+		<a href="{{url_for('deleteItem', category_name = category.name, item_name = item.name )}}"> 
+			<button class="btn btn-sm btn-danger">
+					<span aria-hidden="true"></span> Delete
+			</button>
+		</a>
+	</div>
+{% endblock %}
+

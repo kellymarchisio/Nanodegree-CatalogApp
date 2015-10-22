@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700' rel='stylesheet' type='text/css'>
+		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+		<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+		<script src='//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js'></script> 
+		<script src='https://apis.google.com/js/client:platform.js?onload=start' async defer></script>
+	</head>
+	<body>
+		<div class="container">
+			<div class="col-xs-12">
+				<div id="catalog-container">
+					<div id="top-bar" class="col-xs-12 navbar-fixed-top">
+						<div class="col-xs-6">
+							<h2 id="catalog-title">Catalog App</h2>
+						</div>
+						<div id="result" class="col-xs-offset-1 col-xs-3"></div>
+						<div class="col-xs-2 login">
+							<div id="signinButton">
+								<span class="g-signin"
+									data-scope="openid email"
+									data-clientid="380031684256-4n5iambvnugt34p68t18i507mum5r954.apps.googleusercontent.com"
+									data-redirecturi="postmessage"
+									data-accesstype="offline"
+									data-cookiepolicy="single_host_origin"
+									data-callback="signInCallback"
+									data-approvalprompt="force">
+								</span>
+							</div>
+						</div>
+					</div>
+					<div id="vertical-offset"></div>
+				</div>
+			</div>
+			<div id="second-bar" class="col-xs-12 navbar-fixed-top">
+				{% block content %}
+				{% endblock %}
+			</div>
+		</div>
+	<script>
+	function signInCallback(authResult){
+		if (authResult['code']) {
+			$('#signinButton').attr('style', 'display: None');
+			$.ajax({
+				type: 'POST',
+				url: '/gconnect?state={{STATE}}',
+				processData: false,
+				contentType: 'application/octet-stream; charset=utf-8',
+				data: authResult['code'],
+				success: function(result) {
+					if (result) {
+						$('#result').removeClass('col-xs-offset-1 col-xs-3');
+						$('#result').addClass('col-xs-offset-2 col-xs-4');
+						$('#result').html(result)
+						setTimeout(function() {
+							window.location.href = '/';
+						}, 6000);
+					} 
+					else if (authResult['error']) {
+						console.log('There was an error: ' + authResult['error'])
+					} 
+					else {
+						$('#result').html('Failed to make a server-side call. Check your configuration and console.');
+					}
+				}
+			});
+		}
+	}
+	</script>
+	</body>
+</html>
